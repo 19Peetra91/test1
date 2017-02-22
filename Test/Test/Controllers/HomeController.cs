@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Test.Models;
 
 namespace Test.Controllers
 {
@@ -10,7 +11,10 @@ namespace Test.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            MojaClass clas = new MojaClass();
+            clas.PovuciXML();
+
+            return View(clas);
         }
 
         public ActionResult About()
@@ -26,5 +30,6 @@ namespace Test.Controllers
 
             return View();
         }
+        
     }
 }

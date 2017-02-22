@@ -1,196 +1,41 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@using Test.Models
+@model Test.Models.MojaClass
+
 @section Headscripts{
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="~/slick/slick.min.js"></script>
-    <style>
-        .Shape_1 {
-            background-color: rgb(255, 255, 255);
-            height: 210px;
-            z-index: 61;
-        }
-
-        #slika {
-            background: url("../../slike/Shape1.png") no-repeat;
-            background-size: 100%;
-            height: 350px;
-        }
-
-        #slika2 {
-            background: url("../../slike/Shape2.png") no-repeat;
-            background-size: 100%;
-            height: 350px;
-        }
-
-        #vector {
-            position: relative;
-            right: -500px;
-        }
-
-        #tekstInfo {
-            position: relative;
-            right: -520px;
-            top: -30px;
-            font-family: Georgia 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-size: 25px;
-            max-width: 150px;
-        }
-
-        #shape17 {
-            position: relative;
-            left: -20px;
-            bottom: -30px;
-        }
-
-        .why {
-            position: relative;
-            top: -40px;
-        }
-
-        .Shape_2 {
-            background-color: rgb(241, 241, 242);
-            height: 210px;
-            z-index: 47;
-        }
-
-        p {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 15px;
-            color: #656666;
-            text-align: left;
-            margin: 0;
-        }
-
-        h4 {
-            font-family: Arial;
-            font-size: 26px;
-            color: #00c0f3;
-        }
-
-
-        .arrow-left {
-            width: 0;
-            height: 0;
-            z-index: 49;
-            border-top: 25px solid transparent;
-            border-right: 37px solid rgb(10, 10, 10);
-            border-bottom: 25px solid transparent;
-            position: relative;
-            right: -345px;
-            top: -155px;
-        }
-
-        .Layer_18 {
-            background: url("../../slike/Layer18.png") no-repeat;
-            background-size: 100%;
-            height: 210px;
-        }
-
-        .refl {
-            position: relative;
-            left: -30px;
-            bottom: -25px;
-        }
-
-        #title {
-            position: relative;
-            bottom: -150px;
-        }
-
-        h5 {
-            position: relative;
-            bottom: -155px;
-            color: #ffffff;
-        }
-
-        .Shape_3 {
-            background-color: rgb(0, 192, 243);
-            max-height: 100%;
-            z-index: 55;
-        }
-
-        .Shape_4 {
-            background: url("../../slike/naocalko.png") no-repeat;
-            background-size: 100%;
-            height: 210px;
-        }
-
-        .arrow-right {
-            width: 0;
-            height: 0;
-            border-top: 20px solid transparent;
-            border-left: 30px solid rgb(10, 10, 10);
-            border-bottom: 20px solid transparent;
-            position: relative;
-            left: -35px;
-            top: -130px;
-        }
-
-
-        .Shape_5 {
-            background-color: rgb(241, 241, 242);
-            max-height: 100%;
-            z-index: 70;
-        }
-
-        a {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
-            color: #00c0f3;
-            text-align: left;
-        }
-
-        .prof {
-            position: relative;
-            top:100px;
-            left:-10px;
-            max-height: 100%;
-        }
-
-        .crta {
-            background-color: rgb(0, 192, 243);
-            width: 100%;
-            height: 2px;
-            z-index: 17;
-            float: left;
-        }
-
-        h6 {
-            font-family: Arial, Helvetica, sans-serif;
-            color: white;
-            font-size: 18px;
-        }
-    </style>
-
 }
 <div class="container">
     <div class="row">
         <div class="col-lg-9" id="slika">
-            <img class="img-responsive" id="person1" src="~/slike/Person Name CEO.png" style="position:relative; bottom:-150px; right:-30px"/>
+            <img class="img-responsive" id="person1" src="~/slike/Person Name CEO.png" style="position:relative; bottom:-150px; right:-30px" />
             <img class="img-responsive" id="person2" src="~/slike/Person Name Director.png" style="position:relative; right:-340px; bottom:-50px" />
             <img class="img-responsive" id="vector" src="~/slike/Vector Smart Object.png" />
-            <div class="text-left" id="tekstInfo">
-                <h4 style="color:white">YYXXX is<br /> a leading<br /> independent private equity <br />house.</h4>
-            </div>
-            <a href="#" style="position:relative; right:-530px;">Find out more</a>
+            @foreach (var v in Model.lista)
+            {
+                <div class="text-left" id="tekstInfo">
+
+                    <h4 style="color:white; max-width:20%">@v.naslov</h4>
+
+                </div>
+
+                <a href="@v.url" style="position:relative; right:-520px; bottom:-20px; text-decoration:underline">@v.linkcopy</a>
+            }
         </div>
         <div class="col-lg-3" id="slika2">
             <img id="shape17" src="~/slike/Shape17.png" />
             <div class="text-left col-lg-12 why">
-                <h3 style="font-family:Arial, Helvetica, sans-serif; color:#656666; font-size:26px; text-align:left">Why <br />choose us</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, <br />
-                    consectetuer adipiscing elit.<br />
-                    Aenean commodo ligula <br />
-                    ivamus elementum semper<br />
-                    nisi.Aenean vulputate<br />
-                    eleifend tellus. Aenean leo <br />
-                    ligula, porttitor eu.
-                </p>
-                <br />
-                <a href="#" style="font-family:Arial, Helvetica, sans-serif; font-size:15px">Discover more about <br /> Inflexion</a>
+                @foreach (var x in Model.lista2)
+                {
+
+                    <h3 style="font-family:Arial, Helvetica, sans-serif; color:#656666; font-size:26px; text-align:left; max-width:80%">@x.naslov</h3>
+                    <p style="max-width:85%">
+                        @x.text
+                    </p>
+                    <br />
+                    <a href="@x.url" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; text-decoration:underline">@x.linkcopy</a>
+                }
             </div>
         </div>
     </div>
@@ -213,30 +58,27 @@
         <div class="col-md-4 col-lg-4 Layer_18">
             <img class="img-responsive refl" src="~/slike/Layer17.png" style="float:right" />
             <h5>Title</h5>
-            <a id="title" href="#" style="font-family:Arial, Helvetica, sans-serif; font-size:12px;  color:#00c0f3; text-align:left">Lorem Ipsum</a>
+            <a id="title" href="#" style="text-decoration:underline; font-family:Arial, Helvetica, sans-serif; font-size:12px;  color:#00c0f3; text-align:left">Lorem Ipsum</a>
         </div>
     </div>
-    <div class="row">
+    <div class="row zadnji" style="max-height:210px">
         <div class="col-md-5 col-lg-5 Shape_3">
-            <br />
             <h4 style="color:white">News &<br />press</h4>
             <div class="text-left col-md-6" style="position:relative; left:-15px">
                 <p style="color:white">Lorem ipsum dolor sit amet,<br /> consectetuer adipiscing elit. <br />Aenean commodo.</p>
             </div>
             <div class="text-left col-md-6">
                 <p style="color:white">Lorem ipsum dolor sit amet,<br /> consectetuer adipiscing elit. <br />Aenean commodo.</p>
-                <a href="#" style="color:white; font-size:large">Details</a>
-               
+                <a href="#" style="text-decoration:underline; color:white; position:relative; top:-10px"><br />Details</a>
             </div>
         </div>
         <div class="col-md-2 col-lg-2 Shape_4">
             <div class="text-left prof">
-                <p style="color:white">Person name</p>
-                <a href="#">Professional</a>
+                <p style="color:white; font-size:small; position:relative; bottom:-5px">Person name</p>
+                <a href="#" style="text-decoration:underline;">Professional</a>
             </div>
         </div>
         <div class="col-md-5 col-lg-5 Shape_5">
-            <br />
             <h4>Meet<br />us</h4>
             <p>Lorem ipsum dolor sit amet,<br /> consectetuer adipiscing elit. <br />Aenean commodo ligula ivamus elementum.</p>
             <div class="arrow-right"></div>
@@ -279,10 +121,10 @@
             <h6>Find us</h6>
             <a href="#">Terms & Conditions</a><br />
             <a href="#">Cookies & Conditions </a><br />
-            <a href="#">Sitemap</a>
-            <div class="linkovi" style="display:inline">
-                <img class="img-responsive" src="~/slike/Shape16.png" />
-                <img class="img-responsive" src="~/slike/Shape15.png" />
+            <a href="#">Sitemap</a><br />
+            <div class="linkovi">
+                <a href="https://www.youtube.com/"><img class="img-responsive" src="~/slike/Shape16.png" /></a>
+                <a href="https://www.linkedin.com/" style="position:relative; right:-15px; top: -2px"><img class="img-responsive" src="~/slike/Shape15.png" /></a>
             </div>
         </div>
     </div>
@@ -307,7 +149,7 @@
                 <div><img src="~/slike/slider/Layer 27.png" /></div>
                 <div><img src="~/slike/slider/Layer24.png" /></div>
                 <div><img src="~/slike/slider/Layer 27-1.png" /></div>
-               
+
             </div>
         </div>
         <div class="col-md-6 col-lg-6"></div>
